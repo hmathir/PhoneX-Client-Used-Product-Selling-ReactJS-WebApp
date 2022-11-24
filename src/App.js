@@ -3,11 +3,14 @@ import './App.css';
 import router from './Routes/routes';
 
 function App() {
-  
+
   return (
-    <RouterProvider router={router}>
-      
-    </RouterProvider>
+    <div className='container p-2 mx-auto'>
+      <RouterProvider router={router}>
+
+      </RouterProvider>
+    </div>
+
   );
 }
 
