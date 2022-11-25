@@ -19,7 +19,7 @@ const ModalBooking = ({ setShowModal, data }) => {
 
         }
         setLoading(true);
-        fetch(`http://localhost:5000/book?id=${_id}`, {
+        fetch(`https://phonex.vercel.app/booking?id=${_id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
