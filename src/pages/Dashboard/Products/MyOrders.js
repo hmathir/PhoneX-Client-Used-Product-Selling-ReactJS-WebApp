@@ -5,11 +5,20 @@ import { AuthContext } from '../../../context/MainContext';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
-    const { data = [] } = useQuery({
-        queryKey: ['myOrders', user?.id],
+
+    const { data = []} = useQuery({
+        queryKey: ['my-orders', user?.email],
         queryFn: () => fetch(`https://phonex.vercel.app/my-orders?email=${user?.email}`)
-            .then(res => res.json()),
+            .then(res => res.json())
+            .then(data => {
+                return data;
+            })
     })
+
+    if(data.length === 0) {
+        return <h1>Loading...</h1>
+    }
+
     return (
         <div>
             <div className="overflow-x-auto w-full">
@@ -21,16 +30,12 @@ const MyOrders = () => {
                             <th>Name</th>
                             <th>PRICE</th>
                             <th>STATUS</th>
-                            <th>
-                                <Link to="/dashboard/add-product" className='btn btn-sm btn-accent'>
-                                    Add Product
-                                </Link>
-                            </th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            data.map(product => <tr>
+                            data.map(booking => <tr>
                                 <th>
                                     1
                                 </th>
@@ -38,36 +43,26 @@ const MyOrders = () => {
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={product.image} alt="Avatar Tailwind CSS Component" />
+                                                <img src={booking.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="font-bold">{product.name}</div>
+                                            <div className="font-bold">{booking.name}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    BDT {product.price}
+                                    BDT {booking.price}
                                 </td>
                                 <td>
-                                    {product.status}
+                                    {booking.status}
                                 </td>
                                 <th>
-                                    <button className="btn btn-outline btn-xs">delete</button>
+                                    {booking.status !== "Paid" && <Link to={`/dashboard/payment/${booking._id}`} className="btn btn-outline btn-xs">PAY NOW</Link>}
                                 </th>
                             </tr>)
                         }
                     </tbody>
-
-                    <tfoot>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>TOTAL POST</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
-
                 </table>
             </div>
         </div>

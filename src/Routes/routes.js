@@ -3,6 +3,7 @@ import SignUp from "../pages/Acoount/SignUp";
 import CategoryPage from "../pages/Category/CategoryPage";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import AddProduct from "../pages/Dashboard/Products/AddProducts";
+import MyOrders from "../pages/Dashboard/Products/MyOrders";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layout/Main/Main");
@@ -44,6 +45,10 @@ const router = createBrowserRouter(
                     element: <Payment></Payment>,
                     loader: ({params}) => fetch(`https://phonex.vercel.app/bookings/${params.id}`)
                 },
+                {
+                    path: '/dashboard/my-orders',
+                    element: <MyOrders></MyOrders>
+                }
             ]
         }
     ]
