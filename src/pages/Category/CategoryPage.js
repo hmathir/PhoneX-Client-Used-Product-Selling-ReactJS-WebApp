@@ -9,7 +9,6 @@ const CategoryPage = () => {
     const [showModal, setShowModal] = useState(null);
     return (
         <div className='min-h-[90vh]'>
-            <h3>Book In this Category {data.length}</h3>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-4">
                 {
                     data.map(product => <ProductCard
