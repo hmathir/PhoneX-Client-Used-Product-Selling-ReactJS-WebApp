@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 
 const ProductCategory = () => {
-    const { data: productCategorys = [] } = useQuery({
+    const { data: productCategorys = [], isLoading } = useQuery({
         queryKey: "productCategory",
         queryFn: async () => {
             const res = await fetch("https://phonex.vercel.app/categories");
@@ -11,13 +11,13 @@ const ProductCategory = () => {
         }
     });
 
- 
+
     return (
-        <div className="my-5 py-5  rounded-xl">
+        <>{isLoading ? <h1 className="text-center text-xl p-3">Loading...</h1> : <div className="my-5 py-5  rounded-xl">
             <h1 className="text-2xl text-center">Category</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-3">
                 {
-                    productCategorys.map((productCategory,index) => {
+                    productCategorys.map((productCategory, index) => {
                         return <div key={index}>
                             <Link style={{
                                 backgroundImage: `url(${productCategory.categoryImage})`,
@@ -39,7 +39,8 @@ const ProductCategory = () => {
 
             </div>
 
-        </div>
+        </div>}</>
+
     );
 };
 

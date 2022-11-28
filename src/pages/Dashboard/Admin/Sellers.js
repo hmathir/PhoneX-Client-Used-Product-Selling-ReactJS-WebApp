@@ -105,7 +105,7 @@ const Sellers = () => {
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={seller.profile} alt="Avatar Tailwind CSS Component" />
+                                                    <img src={seller?.profile ? seller?.profile : 'https://i.ibb.co/FWJnm4d/ip.png'} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                             <div>

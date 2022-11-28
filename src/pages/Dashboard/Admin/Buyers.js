@@ -66,8 +66,8 @@ const Buyers = () => {
                     </thead>
                     <tbody>
                         {
-                            data.map((seller, i) => {
-                                seller.name = seller.firstName + ' ' + (seller?.lastName ? seller?.lastName : '') 
+                            data.map((buyer, i) => {
+                                buyer.name = buyer.firstName + ' ' + (buyer?.lastName ? buyer?.lastName : '') 
                                 return <tr>
                                     <th>
                                         {i + 1}
@@ -76,19 +76,19 @@ const Buyers = () => {
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={seller.profile} alt="Avatar Tailwind CSS Component" />
+                                                    <img src={buyer?.profile ? buyer?.profile : 'https://i.ibb.co/FWJnm4d/ip.png'} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                             <div>
-                                                <div className="font-bold">{seller.name}</div>
+                                                <div className="font-bold">{buyer.name}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        {seller.email}
+                                        {buyer.email}
                                     </td>
                                     <th>
-                                        <button onClick={() => deleteUser(seller.email)} className="btn btn-outline btn-xs">Delete</button>
+                                        <button onClick={() => deleteUser(buyer.email)} className="btn btn-outline btn-xs">Delete</button>
                                     </th>
                                 </tr>
                             })

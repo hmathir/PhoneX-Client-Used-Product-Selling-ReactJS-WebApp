@@ -1,9 +1,9 @@
-import { faCheck, faClock, faClockRotateLeft, faMapMarker, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faClockRotateLeft, faMapMarker, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import { GoReport } from "react-icons/go";
+import { GoReport, GoVerified } from "react-icons/go";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/MainContext";
@@ -86,7 +86,7 @@ const ProductCard = ({ product, setShowModal, showModal }) => {
                             </div>
                             <div className="flex items-center gap-1">
 
-                                <span className="text-gray-500"> <FontAwesomeIcon icon={faUser} /> Seller Name: {seller} <>{verified && <FontAwesomeIcon className="text-white bg-blue-400 rounded-full" icon={faCheck}/>}</></span>
+                                <span className="flex  items-center  gap-1 text-gray-500"> <FontAwesomeIcon icon={faUser} /> Seller Name: {seller} <>{verified && <GoVerified className="text-green-400"/>}</></span>
                             </div>
                         </div>
                     </div>

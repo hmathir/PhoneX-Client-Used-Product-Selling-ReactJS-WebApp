@@ -54,7 +54,7 @@ const DashboardSidebar = () => {
                                 <li>
                                     <NavLink to='/dashboard/sellers'
                                         style={({ isActive }) =>
-                                            isActive ? { backgroundColor: 'blue', color: "white" } : {}
+                                            isActive ? { backgroundColor: 'gray', color: "white" } : {}
                                         }
                                         className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 ">
                                         <GoOrganization />
@@ -64,7 +64,7 @@ const DashboardSidebar = () => {
                                 <li>
                                     <NavLink to='/dashboard/buyers'
                                         style={({ isActive }) =>
-                                            isActive ? { backgroundColor: 'blue', color: "white" } : {}
+                                            isActive ? { backgroundColor: 'gray', color: "white" } : {}
                                         }
                                         className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 ">
                                         <MdGroups />
@@ -74,7 +74,7 @@ const DashboardSidebar = () => {
                                 <li>
                                     <NavLink
                                         style={({ isActive }) =>
-                                            isActive ? { backgroundColor: 'blue', color: "white" } : {}
+                                            isActive ? { backgroundColor: 'gray', color: "white" } : {}
                                         }
                                         to='/dashboard/reports' className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -93,7 +93,7 @@ const DashboardSidebar = () => {
                                 <li>
                                     <NavLink to='/dashboard/my-products'
                                         style={({ isActive }) =>
-                                            isActive ? { backgroundColor: 'blue', color: "white" } : {}
+                                            isActive ? { backgroundColor: 'gray', color: "white" } : {}
                                         }
                                         className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 ">
                                         <MdStore />
@@ -103,7 +103,7 @@ const DashboardSidebar = () => {
                                 <li>
                                     <NavLink to='/dashboard/add-product'
                                         style={({ isActive }) =>
-                                            isActive ? { backgroundColor: 'blue', color: "white" } : {}
+                                            isActive ? { backgroundColor: 'gray', color: "white" } : {}
                                         }
                                         className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -121,7 +121,7 @@ const DashboardSidebar = () => {
                                 <li>
                                     <NavLink to='/dashboard/my-orders'
                                         style={({ isActive }) =>
-                                            isActive ? { backgroundColor: 'blue', color: "white" } : {}
+                                            isActive ? { backgroundColor: 'gray', color: "white" } : {}
                                         }
                                         className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
