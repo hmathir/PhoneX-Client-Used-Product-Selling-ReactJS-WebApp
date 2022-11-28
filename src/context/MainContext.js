@@ -1,15 +1,16 @@
 import { createContext, useEffect, useState } from 'react';
 
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import app from '../Firebase/firebase.init';
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 
+import toast from 'react-hot-toast';
+import app from '../Firebase/firebase.init';
 
 export const AuthContext = createContext()
 const auth = getAuth(app);
 
 const MainContext = ({ children }) => {
     const [user, setUser] = useState(null);
-    const googleProvider = new GoogleAuthProvider();
+    const gProvider = new GoogleAuthProvider()
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -18,11 +19,15 @@ const MainContext = ({ children }) => {
                 fetch(`https://phonex.vercel.app/user?email=${result.email}`)
                     .then(res => res.json())
                     .then(data => {
-                        setUser(data)
                         setLoading(false);
+                        setUser(data)
+                        storeJwt(result.email)
                     })
             } else {
                 setUser(null)
+                setLoading(false);
+                toast.remove('loading')
+                localStorage.removeItem('token')
             }
         })
         return () => unlink();
@@ -34,16 +39,28 @@ const MainContext = ({ children }) => {
     }
     const withGoogle = () => {
         setLoading(true)
-        return signInWithPopup(auth, googleProvider);
+        return signInWithPopup(auth, gProvider);
     }
 
     const login = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
-   
 
-    const value = { emailPassword, withGoogle, user, login, loading, setLoading }
+    const logOut = () => {
+        setLoading(true)
+        return signOut(auth)
+
+    }
+    const storeJwt = email => {
+        fetch(`https://phonex.vercel.app/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(token => {
+                localStorage.setItem('token', `Bearer ${token.token}`)
+            })
+    }
+
+    const value = { emailPassword, withGoogle, user, login, loading, setLoading, logOut }
     return (
         <AuthContext.Provider value={value}>
             {children}

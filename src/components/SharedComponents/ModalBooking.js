@@ -67,7 +67,7 @@ const ModalBooking = ({ setShowModal, data }) => {
                             </div>
                         </div>
                         <input type="submit" disabled={loading} className={`btn w-full ${loading && "loading"}`} />
-                        <button>Seller Not Booked</button>
+                        
                     </form>
                 </div>
             </div>

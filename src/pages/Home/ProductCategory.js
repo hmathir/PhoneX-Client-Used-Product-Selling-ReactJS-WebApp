@@ -17,8 +17,8 @@ const ProductCategory = () => {
             <h1 className="text-2xl text-center">Category</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-3">
                 {
-                    productCategorys.map((productCategory) => {
-                        return <>
+                    productCategorys.map((productCategory,index) => {
+                        return <div key={index}>
                             <Link style={{
                                 backgroundImage: `url(${productCategory.categoryImage})`,
                             }}
@@ -31,7 +31,7 @@ const ProductCategory = () => {
                                 </div>
                             </Link>
 
-                        </>
+                        </div>
                     })
 
                 }

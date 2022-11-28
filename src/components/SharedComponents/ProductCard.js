@@ -1,7 +1,11 @@
 import { faCheck, faClock, faClockRotateLeft, faMapMarker, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/MainContext";
 const ProductCard = ({ product, setShowModal, showModal }) => {
+    const {user} = useContext(AuthContext);
     const { name, image, location, price, newPrice, category, details, ads, verified, date, usedTime, seller } = product;
 
     return (
@@ -65,9 +69,13 @@ const ProductCard = ({ product, setShowModal, showModal }) => {
                     </div>
                 </div>
                 <div>
-                    <label
-                        onClick={() => setShowModal(product)}
-                        htmlFor="booking-modal" className="btn w-full">Book Now</label>
+                {user && <label
+                    disabled={user?.role !== "buyer" || product?.status === "booked"}
+                    onClick={() => setShowModal(product)}
+                    htmlFor="booking-modal" className="btn btn-warning w-full">
+                    {user?.role === "buyer" && product.status === "Available" ? "Buy Now" : ""} {user?.role === "seller" && "You Are Seller"}{user?.role === "admin" && "You Are Admin"}{product.status === "booked" && user.role !== "admin" && "Already Booked"}
+                </label>}
+                {!user && <Link className='btn w-full' to="/login">Login</Link>}
                 </div>
             </div>
 

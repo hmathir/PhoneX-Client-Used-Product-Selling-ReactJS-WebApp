@@ -1,9 +1,11 @@
 import Dashboard from "../Layout/Dashboard/Dashboard";
+import Login from "../pages/Acoount/Login";
 import SignUp from "../pages/Acoount/SignUp";
 import CategoryPage from "../pages/Category/CategoryPage";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import AddProduct from "../pages/Dashboard/Products/AddProducts";
 import MyOrders from "../pages/Dashboard/Products/MyOrders";
+import LoginRoute from "./LoginRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layout/Main/Main");
@@ -20,12 +22,16 @@ const router = createBrowserRouter(
                     element: <HomePage></HomePage>
                 },
                 {
+                    path: '/login',
+                    element: <Login></Login>
+                },
+                {
                     path: '/register',
                     element: <SignUp></SignUp>
                 },
                 {
                     path: '/category/:id',
-                    element: <CategoryPage></CategoryPage>,
+                    element: <LoginRoute><CategoryPage/></LoginRoute>,
                     loader: ({params}) => {
                         return fetch(`https://phonex.vercel.app/category/${params.id}`)
                     }
