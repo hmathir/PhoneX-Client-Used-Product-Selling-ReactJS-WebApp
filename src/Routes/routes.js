@@ -5,12 +5,14 @@ import CategoryPage from "../pages/Category/CategoryPage";
 import Buyers from "../pages/Dashboard/Admin/Buyers";
 import Reports from "../pages/Dashboard/Admin/Reports";
 import Sellers from "../pages/Dashboard/Admin/Sellers";
+import MyOrders from "../pages/Dashboard/Orders/MyOrders";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import AddProduct from "../pages/Dashboard/Products/AddProducts";
-import MyOrders from "../pages/Dashboard/Products/MyOrders";
 import UserDashboard from "../pages/Dashboard/User/UserDashboard";
 import AdminRoute from "./AdminRoute";
+import BuyerRoute from "./BuyerRoute";
 import LoginRoute from "./LoginRoute";
+import SellerRoute from "./SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layout/Main/Main");
@@ -73,8 +75,12 @@ const router = createBrowserRouter(
                     element: <AdminRoute><Reports></Reports></AdminRoute> 
                 },
                 {
+                    path: '/dashboard/my-products',
+                    element: <SellerRoute></SellerRoute>
+                },
+                {
                     path: '/dashboard/my-orders',
-                    element: <MyOrders></MyOrders>
+                    element: <BuyerRoute><MyOrders/></BuyerRoute>
                 }
             ]
         }

@@ -1,12 +1,34 @@
 import { faCheck, faClock, faClockRotateLeft, faMapMarker, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import { useContext } from "react";
+import toast from "react-hot-toast";
+import { GoReport } from "react-icons/go";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/MainContext";
 const ProductCard = ({ product, setShowModal, showModal }) => {
     const {user} = useContext(AuthContext);
-    const { name, image, location, price, newPrice, category, details, ads, verified, date, usedTime, seller } = product;
+    const { name, image, location, price, newPrice, details, verified, date, usedTime, seller, _id } = product;
+
+    const addReport = () => {
+        toast.loading("reporting...", { duration: 1000 })
+        const details = {
+            ProductName: name,
+            productId: _id,
+            reporterEmail: user.email,
+            reporterName: user.name,
+        }
+
+        axios.post('https://phonex.vercel.app/report', details)
+            .then(res => {
+                if (res.data.success) {
+                    toast.success('Reported Successfully');
+                } else {
+                    toast.error(res.data.message)
+                }
+            })
+    }
 
     return (
         <div className="border border-black rounded-lg">
@@ -27,8 +49,9 @@ const ProductCard = ({ product, setShowModal, showModal }) => {
                     <dl>
 
 
-                        <div>
+                        <div className="flex justify-between items-center">
                             <dd className="font-bold text-xl">{name}</dd>
+                            <dd onClick={addReport}><GoReport title="Report To Admin"></GoReport></dd>
                         </div>
                         <div className="flex justify-between items-center my-2">
                             <dd className="text-sm border border-black rounded-2xl p-1 bg-teal-800 text-white font-bold">Selling Price: ৳ {price}</dd>

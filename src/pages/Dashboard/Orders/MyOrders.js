@@ -6,7 +6,7 @@ import { AuthContext } from '../../../context/MainContext';
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
 
-    const { data = []} = useQuery({
+    const { data = [], isLoading } = useQuery({
         queryKey: ['my-orders', user?.email],
         queryFn: () => fetch(`https://phonex.vercel.app/my-orders?email=${user?.email}`)
             .then(res => res.json())
@@ -15,12 +15,8 @@ const MyOrders = () => {
             })
     })
 
-    if(data.length === 0) {
-        return <h1>Loading...</h1>
-    }
-
     return (
-        <div>
+        <>{isLoading ? <h1>Loading...</h1> : <div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
 
@@ -30,7 +26,7 @@ const MyOrders = () => {
                             <th>Name</th>
                             <th>PRICE</th>
                             <th>STATUS</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -65,7 +61,8 @@ const MyOrders = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div>}</>
+
     );
 };
 
