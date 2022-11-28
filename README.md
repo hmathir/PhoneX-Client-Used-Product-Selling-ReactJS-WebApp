@@ -2,7 +2,7 @@
 
 ## Live Site:
 
-Live Website Link:
+Live Website Link: https://phonex-16f8c.web.app/
 
 ## Technology What I am Use:
 
