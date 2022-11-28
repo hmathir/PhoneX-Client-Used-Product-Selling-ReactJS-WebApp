@@ -120,7 +120,7 @@ const AddProduct = () => {
                         <span className="label-text">Phone*</span>
                     </label>
                     <input type="number"
-                        placeholder="01 11 22 11 44"
+                        placeholder="01717434427"
                         {...register('sellerPhone', { required: true })}
                         className="input input-bordered w-full " />
                 </div>
@@ -152,7 +152,7 @@ const AddProduct = () => {
                 <label className="label">
                     <span className="label-text">Details*</span>
                 </label>
-                <textarea placeholder="Enter your Book details"
+                <textarea placeholder="Enter Your Phone Details"
                     {...register('details', { required: true })}
                     className="textarea textarea-bordered mb-2 w-full " ></textarea>
             </div>

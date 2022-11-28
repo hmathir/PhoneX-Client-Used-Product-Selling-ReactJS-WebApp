@@ -28,10 +28,11 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {/* all time */}
                         <Link to='/' className='btn btn-ghost'>Home</Link>
+                        <Link to='/blog' className='btn btn-ghost'>Blogs</Link>
                         {/* after login */}
                         {user?.email ? <>
                             <Link to='/dashboard' className='btn btn-ghost'>Dashboard</Link>
-                            <button onClick={handleLogOut} className='btn btn-primary'>LogOut</button >
+                            <button onClick={handleLogOut} className='btn btn-secondary'>LogOut</button >
                         </> : <>
                             <Link to='/register' className='btn btn-ghost'>Register</Link>
                             <Link to='/login' className='btn btn-accent'>Login</Link>
@@ -39,25 +40,26 @@ const Header = () => {
                         </>}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">PhoneX</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl border border-black">PhoneX</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {/* all time */}
                     <Link to='/' className='btn btn-ghost'>Home</Link>
+                    <Link to='/blog' className='btn btn-ghost'>Blogs</Link>
                     {/* after login */}
                     {user?.email ? <>
                         <Link to='/dashboard' className='btn btn-ghost'>Dashboard</Link>
-                        <button onClick={handleLogOut} className='btn btn-primary'>LogOut</button >
+                        <button onClick={handleLogOut} className='btn btn-secondary'>LogOut</button >
                     </> : <>
                         <Link to='/register' className='btn btn-ghost'>Register</Link>
-                        <Link to='/login' className='btn btn-accent'>Login</Link>
+                        <Link to='/login' className='btn btn-secondary'>Login</Link>
 
                     </>}
                 </ul>
             </div>
             <div className="navbar-end lg:hidden">
-                <label htmlFor="admin-menu" className="btn btn-primary drawer-button lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                <label htmlFor="admin-menu" className="btn btn-secondary drawer-button lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
             </div>
         </div>

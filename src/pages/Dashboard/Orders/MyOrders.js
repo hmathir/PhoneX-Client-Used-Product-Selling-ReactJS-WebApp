@@ -8,7 +8,11 @@ const MyOrders = () => {
 
     const { data = [], isLoading } = useQuery({
         queryKey: ['my-orders', user?.email],
-        queryFn: () => fetch(`https://phonex.vercel.app/my-orders?email=${user?.email}`)
+        queryFn: () => fetch(`https://phonex.vercel.app/my-orders?email=${user?.email}`,{
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 return data;

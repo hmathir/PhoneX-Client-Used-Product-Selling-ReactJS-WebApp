@@ -44,7 +44,7 @@ const ModalBooking = ({ setShowModal, data }) => {
         <div>
             <input type="checkbox" id="booking-modal" className="modal-toggle" />
             <div className="modal">
-                <div className="modal-box relative p-3 bg-gray-300">
+                <div className="modal-box relative p-3 bg-black">
                     <label onClick={() => setShowModal(null)} htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h1 className='text-xl w-5/6'>Please Confirm Your Booking</h1>
                     <form onSubmit={(e) => handleBooking(e)} className='mt-1 space-y-3'>
@@ -63,7 +63,7 @@ const ModalBooking = ({ setShowModal, data }) => {
                                 <label className="label">
                                     <span className="label-text">Contact Number*</span>
                                 </label>
-                                <input type="number" name="phone" placeholder="0177 44**1044*" className="input input-bordered w-full " />
+                                <input type="number" name="phone" placeholder="01717434427" className="input input-bordered w-full " />
                             </div>
                         </div>
                         <input type="submit" disabled={loading} className={`btn w-full ${loading && "loading"}`} />

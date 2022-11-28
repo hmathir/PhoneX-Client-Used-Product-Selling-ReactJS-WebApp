@@ -1,6 +1,7 @@
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Login from "../pages/Acoount/Login";
 import SignUp from "../pages/Acoount/SignUp";
+import Blog from "../pages/Blog/Blog";
 import CategoryPage from "../pages/Category/CategoryPage";
 import Buyers from "../pages/Dashboard/Admin/Buyers";
 import Reports from "../pages/Dashboard/Admin/Reports";
@@ -30,6 +31,10 @@ const router = createBrowserRouter(
                 {
                     path: "/",
                     element: <HomePage></HomePage>
+                },
+                {
+                    path: "/blog",
+                    element: <Blog></Blog>
                 },
                 {
                     path: '/login',
