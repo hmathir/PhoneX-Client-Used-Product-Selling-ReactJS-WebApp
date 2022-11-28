@@ -8,6 +8,7 @@ import Sellers from "../pages/Dashboard/Admin/Sellers";
 import MyOrders from "../pages/Dashboard/Orders/MyOrders";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import AddProduct from "../pages/Dashboard/Products/AddProducts";
+import MyProducts from "../pages/Dashboard/Products/MyProducts";
 import UserDashboard from "../pages/Dashboard/User/UserDashboard";
 import AdminRoute from "./AdminRoute";
 import BuyerRoute from "./BuyerRoute";
@@ -54,10 +55,6 @@ const router = createBrowserRouter(
                     element: <UserDashboard/>,
                 },
                 {
-                    path: '/dashboard/addproduct',
-                    element: <AddProduct></AddProduct>
-                },
-                {
                     path: '/dashboard/payment/:id',
                     element: <Payment></Payment>,
                     loader: ({params}) => fetch(`https://phonex.vercel.app/bookings/${params.id}`)
@@ -76,7 +73,11 @@ const router = createBrowserRouter(
                 },
                 {
                     path: '/dashboard/my-products',
-                    element: <SellerRoute></SellerRoute>
+                    element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+                },
+                {
+                    path: '/dashboard/add-product',
+                    element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
                 },
                 {
                     path: '/dashboard/my-orders',
