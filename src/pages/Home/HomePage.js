@@ -1,5 +1,7 @@
 import AdvertisedItem from "./AdvertisedItem";
 import Banner from "./Banner";
+import NewsLater from "./NewsLater";
+
 import ProductCategory from "./ProductCategory";
 
 const HomePage = () => {
@@ -8,6 +10,7 @@ const HomePage = () => {
             <Banner></Banner>
             <AdvertisedItem></AdvertisedItem>
             <ProductCategory></ProductCategory>
+            <NewsLater></NewsLater>
         </div>
     );
 };
