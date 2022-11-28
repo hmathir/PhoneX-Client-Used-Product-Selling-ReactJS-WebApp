@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/MainContext';
 
 
@@ -11,6 +12,7 @@ const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
     const { data: categories = [] } = useQuery({
         queryKey: 'categories',
         queryFn: () => fetch('https://phonex.vercel.app/categories')
@@ -59,6 +61,7 @@ const AddProduct = () => {
             .then(data => {
                 if (data.success) {
                     toast.success(data.message);
+                    navigate('/dashboard/my-products');
                     reset();
                 } else {
                     toast.error(data.message);

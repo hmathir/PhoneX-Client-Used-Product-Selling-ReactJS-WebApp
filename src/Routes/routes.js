@@ -10,6 +10,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import AddProduct from "../pages/Dashboard/Products/AddProducts";
 import MyProducts from "../pages/Dashboard/Products/MyProducts";
 import UserDashboard from "../pages/Dashboard/User/UserDashboard";
+import Error from "../pages/ErrorPage/Error";
 import AdminRoute from "./AdminRoute";
 import BuyerRoute from "./BuyerRoute";
 import LoginRoute from "./LoginRoute";
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
         {
             path: "/",
             element: <Main />,
+            errorElement: <Error></Error>,
             children: [
                 {
                     path: "/",
@@ -49,6 +51,7 @@ const router = createBrowserRouter(
         {
             path: '/dashboard',
             element: <Dashboard/>,
+            errorElement: <Error></Error>,
             children: [
                 {
                     path: '/dashboard',
