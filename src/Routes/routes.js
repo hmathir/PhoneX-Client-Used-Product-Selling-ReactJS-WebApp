@@ -2,9 +2,14 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import Login from "../pages/Acoount/Login";
 import SignUp from "../pages/Acoount/SignUp";
 import CategoryPage from "../pages/Category/CategoryPage";
+import Buyers from "../pages/Dashboard/Admin/Buyers";
+import Reports from "../pages/Dashboard/Admin/Reports";
+import Sellers from "../pages/Dashboard/Admin/Sellers";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import AddProduct from "../pages/Dashboard/Products/AddProducts";
 import MyOrders from "../pages/Dashboard/Products/MyOrders";
+import UserDashboard from "../pages/Dashboard/User/UserDashboard";
+import AdminRoute from "./AdminRoute";
 import LoginRoute from "./LoginRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -43,6 +48,10 @@ const router = createBrowserRouter(
             element: <Dashboard/>,
             children: [
                 {
+                    path: '/dashboard',
+                    element: <UserDashboard/>,
+                },
+                {
                     path: '/dashboard/addproduct',
                     element: <AddProduct></AddProduct>
                 },
@@ -50,6 +59,18 @@ const router = createBrowserRouter(
                     path: '/dashboard/payment/:id',
                     element: <Payment></Payment>,
                     loader: ({params}) => fetch(`https://phonex.vercel.app/bookings/${params.id}`)
+                },
+                {
+                    path: '/dashboard/sellers',
+                    element: <AdminRoute><Sellers></Sellers></AdminRoute> 
+                },
+                {
+                    path: '/dashboard/buyers',
+                    element: <AdminRoute><Buyers></Buyers></AdminRoute> 
+                },
+                {
+                    path: '/dashboard/reports',
+                    element: <AdminRoute><Reports></Reports></AdminRoute> 
                 },
                 {
                     path: '/dashboard/my-orders',
